@@ -502,9 +502,9 @@ nav {
 
 .instafeed > :nth-child(2) { background-image: url(../Images/vogue_1.jpg); }
 
-.instafeed > :nth-child(3) { background-image: url(../Images/syiqin_4.5.jpg); }
+.instafeed > :nth-child(3) { background-image: url(../Images/vogue_2.jpeg); }
 
-.instafeed > :nth-child(4) { background-image: url(../Images/vogue_2.jpeg);}
+.instafeed > :nth-child(4) { background-image: url(../Images/syiqin_4.5.jpg);}
 
 /* ======
    End of instagram feed 
