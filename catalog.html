@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="style/mainstyle.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel = "shortcut icon" type = "image/png" href="Images/LS(9)c.png">
+
+        <title>Catalog | Lieya Scarf</title>
+
+        <!-- navigation script -->
+        <script>
+            $(document).ready(function(){ 
+                $.get("nav.html", function(data) {
+                    $("#menu").html(data);
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id = "menu"></div>
+        <header style = "background-color: #333333; color:white; width:100%;">
+            <h2 style = "margin-top:10px; margin-bottom:-10px;">CATALOG</h2>
+            <p style = "text-align: center; font-family: Arial, Helvetica, sans-serif;">click on the image to zoom</p>
+        </header>
+        <p style = "color:red;text-align: center; font-family: Arial, Helvetica, sans-serif;">Please remember the product code to order</p>
+
+        <div id = "main">
+        </div>
+        <div class="show">
+            <div class="overlay"></div>
+            <div class="img-show">
+              <span>X</span>
+              <img src="">
+            </div>
+        </div>
+
+        <section>
+            <div class = "footer" style = "height:15.5vh; background-color:#333333;">
+                <h3>LIEYA SCARF</h3>
+            </div>
+        </section>
+
+        <script src = "catalog/data.js"></script>
+        <script>
+            var material = localStorage.getItem("slideIndex");
+            var type = localStorage.getItem("cslideIndex");
+
+            localStorage.removeItem("slideIndex");
+            localStorage.removeItem("cslideIndex");
+
+            if(material == 1) { material = null; }
+            else if (material == 2) { material = "Satin"; }
+            else if (material == 3) { material = "Cotton"; }
+            else if (material == 4) { material = "Chiffon"; }
+            else if (material == 5) { material = "Cotton Eyelash"; }
+            else if (material == 6) { material = "Chiffon Eyelash"; }
+
+            if(type == 1) { type = null }
+            else if (type == 2) { type = "Shawl"; }
+            else if (type == 3) { type = "Bawal"; }
+
+            console.log(material);
+            console.log(type);
+
+            //output when filter disable
+            if(material == null && type == null) {
+                for(var i in catalog) { //output to the html
+                    var row =   `
+                                <div id = "container">
+                                    <div id = "image"><img src = ${catalog[i].Image}></div>
+                                    <div id = "info-container">
+                                        <h3>Type: ${catalog[i].Type}</h3>
+                                        <div class = "content" style = "color:#CC444B">Material: ${catalog[i].Material}</div>
+                                        <div class = "content">${catalog[i].Status1}</div>
+                                        <div class = "content">${catalog[i].Quantity}</div>
+                                        <!--
+                                        <div class = "content">${catalog[i].Status2}</div>
+                                        <div class = "content">${catalog[i].Status3}</div>
+                                        <div class = "content">${catalog[i].Status4}</div>
+                                        <div class = "content">${catalog[i].Status5}</div>
+                                        -->
+                                    </div>
+                                </div>
+                                `
+
+                    var output = document.getElementById('main');
+                    output.innerHTML += row;
+                }
+            }
+ 
+            //output when filter enable
+            if(material != null || type != null) {
+                const find = catalog.filter(function(index) {
+                    if(material === null) {
+                        return index.Type === type;
+                    }else if (type === null ) {
+                        return index.Material === material;
+                    }else {
+                        return  index.Material === material &&
+                                index.Type === type; //this is search key 
+                    }
+                })
+
+                if(find == "") {
+                    var output = document.getElementById('main');
+                    output.style.fontFamily = "Arial";
+                    output.style.marginTop = "40px";
+                    output.style.marginLeft = "-10px";
+                    output.style.textAlign = "center";
+                    output.innerHTML = "Sorry... There are no such products :(";
+                }else {
+                    for(var i in find) { //output to the html
+                        var row =   `
+                                    <div id = "container">
+                                        <div id = "image"><img src = ${find[i].Image}></div>
+                                        <div id = "info-container">
+                                            <h3>Type: ${find[i].Type}</h3>
+                                            <div class = "content" style = "color:#CC444B">Material: ${find[i].Material}</div>
+                                            <div class = "content">${catalog[i].Status1}</div>
+                                            <div class = "content">${catalog[i].Quantity}</div>
+                                            <!--
+                                            <div class = "content">${catalog[i].Status2}</div>
+                                            <div class = "content">${catalog[i].Status3}</div>
+                                            <div class = "content">${catalog[i].Status4}</div>
+                                            <div class = "content">${catalog[i].Status5}</div>
+                                        </div>
+                                    </div>
+                                    `
+
+                        var output = document.getElementById('main');
+                        output.innerHTML += row;
+                    }
+                }
+            }
+
+        </script>
+
+        <script>
+            $(function () {
+                "use strict";
+                
+                $("#image img").click(function () {
+                    var $src = $(this).attr("src");
+                    $(".show").fadeIn();
+                    $(".img-show img").attr("src", $src);
+                });
+                
+                $("span, .overlay").click(function () {
+                    $(".show").fadeOut();
+                });
+                
+            });
+        </script>
+    </body>
+</html>

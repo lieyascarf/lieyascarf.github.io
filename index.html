@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="style/mainstyle.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel = "shortcut icon" type = "image/png" href="Images/LS(9)c.png">
+
+        <!-- navigation script -->
+        <script>
+            $(document).ready(function(){ 
+                $.get("nav.html", function(data) {
+                    $("#menu").html(data);
+                });
+            });
+        </script>    
+
+        <title>Lieya Scarf</title>
+
+    </head>
+
+    <body>
+        <div id = "menu"></div>
+        <header><h2>LIEYA SCARF</h2></header>
+
+        <section> <!-- landing section -->
+            <div class = "sec1_container">
+                <div><h3>▼ EFFORTLESS ELEGANCE ▼</h3></div>
+                <img src = "Images/wardina cloud.png">
+                <button id = "shopnow" onclick = "location.href='../catalog.html'">SHOP NOW</button>
+            </div>
+        </section>
+
+        <section> <!-- info section -->
+            <div class = "sec2_container">
+                <div></div>
+                <div class = "sec2_text">
+                    <h3>BEST TUDUNG HERE</h3>
+                    <p>Wanna see the best quality in town? Look at our catalog now! There are a lot of collection to be grab.
+                        We offer you the best quality and services that you will make you repeat order again and again. 
+                        We are based in Penang. Customer's satisfication is our priority.
+                    </p>
+                </div>
+                <div></div>
+            </div>
+        </section>
+        
+        <section> <!-- trusted section -->
+            <div class = "sec3_container">
+                <div class = "sec3_overlay">
+                    <h2>YOU CAN TRUST US</h2>  
+                </div>
+            </div>
+        </section>
+
+        <h4 style = 
+                "color:grey; letter-spacing: 3px; font-family: Arial, Helvetica, sans-serif;
+                 margin:10px; margin-bottom:-13px; text-align:center;">INSTAGRAM</h4>
+        <h1 align ="center" style = "font-size: 1.5rem; color: #333333; font-family:monospace; margin-bottom:50px; letter-spacing: 3px;">@ L I E Y A   S C A R F</h1>
+
+        <section> <!-- landing section -->
+            <div class ="instafeed">
+                <div onclick="window.open('https://www.instagram.com/p/CCtO6_aHocO/','_blank')"></div>
+                <div onclick="window.open('https://www.instagram.com/p/CCtDErEnbjG/','_blank')"></div>
+                <div onclick="window.open('https://www.instagram.com/p/CCtDHMjni4v/','_blank')"></div>
+                <div onclick="window.open('https://www.instagram.com/lieyascarf/','_blank')"></div>
+            </div>
+        </section>
+        
+        <section>
+            <div class = "footer" style = "height:15.8vh; background-color:#333333;">
+                <h3>LIEYA SCARF</h3>
+            </div>
+        </section>
+    
+    </body>
+</html>
