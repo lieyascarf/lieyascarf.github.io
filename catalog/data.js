@@ -83,7 +83,7 @@ const catalog =
         'Material': 'Chiffon',
         'Image': "../catalog/Shawl/E12.jpeg",
         'Quantity': 'Quantity: 1',
-        'Status1': 'E12 - Available',
+        'Status1': 'E12 - Sold Out',
     },
     {
         'Type': 'Shawl',
